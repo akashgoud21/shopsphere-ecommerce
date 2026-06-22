@@ -1,0 +1,37 @@
+{% extends 'base.html' %}
+{% block title %}Home - ShopSphere{% endblock %}
+
+{% block content %}
+<section class="hero-section rounded-4 shadow-lg p-5 mb-5 text-white">
+    <div class="row align-items-center">
+        <div class="col-md-7">
+            <h1 class="display-5 fw-bold">Welcome to ShopSphere</h1>
+            <p class="lead mt-3">
+                A modern E-Commerce Web Application built with Flask, MySQL, and Bootstrap.
+                Browse premium products, add them to your cart, and place orders easily.
+            </p>
+            <a href="{{ url_for('products') }}" class="btn btn-warning btn-lg mt-3">Shop Now</a>
+        </div>
+        <div class="col-md-5 text-center">
+            <img src="https://cdn-icons-png.flaticon.com/512/3081/3081559.png" class="img-fluid hero-img" alt="shopping">
+        </div>
+    </div>
+</section>
+
+<h2 class="section-title mb-4">Featured Products</h2>
+<div class="row g-4">
+    {% for product in products %}
+    <div class="col-md-4">
+        <div class="card product-card shadow-sm h-100">
+            <img src="{{ product.image }}" class="card-img-top product-img" alt="{{ product.name }}">
+            <div class="card-body d-flex flex-column">
+                <h5 class="card-title">{{ product.name }}</h5>
+                <p class="card-text text-muted">{{ product.description[:90] }}...</p>
+                <h4 class="price-tag mt-auto">₹{{ product.price }}</h4>
+                <a href="{{ url_for('products') }}" class="btn btn-primary mt-3">View Product</a>
+            </div>
+        </div>
+    </div>
+    {% endfor %}
+</div>
+{% endblock %}
