@@ -19,21 +19,21 @@
                 </thead>
                 <tbody>
                     {% for order in orders %}
-                    <tr>
-                        <td>#{{ order.id }}</td>
-                        <td>₹{{ order.total }}</td>
-                        <td>
-                            <span class="badge 
-                                {% if order.status == 'Placed' %}bg-primary
-                                {% elif order.status == 'Shipped' %}bg-warning text-dark
-                                {% elif order.status == 'Delivered' %}bg-success
-                                {% else %}bg-secondary{% endif %}">
-                                {{ order.status }}
-                            </span>
-                        </td>
-                        <td>{{ order.created_at }}</td>
-                    </tr>
-                    {% endfor %}
+<tr>
+    <td>#{{ order.id }}</td>
+    <td>₹{{ order.total_amount }}</td>
+    <td>
+        <span class="badge
+            {% if order.status == 'Placed' %}bg-primary
+            {% elif order.status == 'Shipped' %}bg-warning text-dark
+            {% elif order.status == 'Delivered' %}bg-success
+            {% else %}bg-secondary{% endif %}">
+            {{ order.status }}
+        </span>
+    </td>
+    <td>{{ order.created_at }}</td>
+</tr>
+{% endfor %}
                 </tbody>
             </table>
         </div>
